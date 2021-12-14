@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 user=pd.read_csv('./data/userdf.csv',usecols=['reviews_username'])
 username = user.reviews_username.to_list()
-username.append('<select value>')
+username.append('<select user>')
 
 
 @app.route('/', methods=['GET'])
