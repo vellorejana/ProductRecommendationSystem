@@ -87,7 +87,7 @@ def product_predict(user):
 
     user_final_rating = pd.read_pickle("./models/user_recommendation.pkl")
 
-    d = user_final_rating.loc[user_input].T.reset_index().sort_values(by=user_input,ascending=False)[0:20]
+    d = user_final_rating[user_final_rating.user_id==user_input]
 
     user_user = pd.merge(d[['product_id']],productdf,on='product_id', how = 'inner')
 
