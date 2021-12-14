@@ -21,7 +21,7 @@ def predict():
         output=model.product_predict(int_features)
         return render_template('index.html', tables=[output.to_html(classes='data')], titles=output.columns.values, username =username)
     elif request.method == 'GET':
-	return render_template('index.html', username =username)
+		return render_template('index.html', username =username)
     else:
         return render_template('index.html')
 
