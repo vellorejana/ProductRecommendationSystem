@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import preprocess
+import model
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ def home():
 def predict():
     if request.method == 'POST':
         int_features = [x for x in request.form.values()]
-        output=preprocess.product_predict(int_features)
+        output=model.product_predict(int_features)
         return render_template('index.html', tables=[output.to_html(classes='data')], titles=output.columns.values)
     else:
         return render_template('index.html')
