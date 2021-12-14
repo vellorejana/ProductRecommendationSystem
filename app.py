@@ -5,11 +5,12 @@ import pandas as pd
 app = Flask(__name__)
 
 user=pd.read_csv('./data/userdf.csv',usecols=['reviews_username'])
+username = user.reviews_username.to_list()
+username.append('<select value>')
 
 
 @app.route('/', methods=['GET'])
 def home():
-    username = user.reviews_username.to_list()
     return render_template('index.html', username =username)
 
 
@@ -18,7 +19,6 @@ def predict():
     if request.method == 'POST':
         int_features = [x for x in request.form.values()]
         output=model.product_predict(int_features)
-        username = user.reviews_username.to_list()
         return render_template('index.html', tables=[output.to_html(classes='data')], titles=output.columns.values, username =username)
     else:
         return render_template('index.html')
