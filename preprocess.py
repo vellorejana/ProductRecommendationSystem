@@ -39,9 +39,9 @@ def product_predict(user):
     import warnings
     warnings.filterwarnings("ignore")
 
-    nltk.download('wordnet','./nltk_data/')
-    nltk.download('stopwords','./nltk_data/')
-    nltk.download('punkt','./nltk_data/')
+    #nltk.download('wordnet','./nltk_data/')
+    #nltk.download('stopwords','./nltk_data/')
+    #nltk.download('punkt','./nltk_data/')
 
 
     # # Loading Data
