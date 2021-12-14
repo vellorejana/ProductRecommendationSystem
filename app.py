@@ -1,12 +1,16 @@
 from flask import Flask, request, render_template
 import model
+import pandas as pd
 
 app = Flask(__name__)
 
+user=pd.read_csv('./data/userdf.csv',usecols=['reviews_username'])
 
-@app.route('/')
+
+@app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    username = user.reviews_username.to_list()
+    return render_template('index.html', username =username)
 
 
 @app.route("/recommend", methods=['POST'])
